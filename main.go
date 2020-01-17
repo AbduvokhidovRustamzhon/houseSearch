@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"sort"
 )
 
@@ -46,7 +45,6 @@ func searchByMaxPrice(houses []house, maxPrice int64) []house { // 3 punkt -
 		if house.price <= maxPrice {
 			result = append(result, house)
 		}
-		result = sortByExpensivePrice(result)
 	}
 	return result
 }
@@ -57,7 +55,6 @@ func searchByMinAndMaxPrice(houses []house, maxPrice int64, minPrice int64) []ho
 		if house.price <= minPrice && house.price >= maxPrice {
 			result = append(result, house)
 		}
-		result = sortByExpensivePrice(result)
 	}
 	return result
 }
@@ -86,43 +83,5 @@ func searchByRegions(houses []house, regions []string) []house { // 3 punkt -
 }
 
 func main() {
-	houses := []house{
-		{
-			id:           1,
-			name:         "Отличная квартира в центре города",
-			price:        45000,
-			distanceFrom: 12,
-			region:       "Сино",
-		},
-		{
-			id:           2,
-			name:         "2х комнатная квартира в Душанбе",
-			price:        35000,
-			distanceFrom: 32,
-			region:       "Сомони",
-		},
-		{
-			id:           3,
-			name:         "3х комнатная квартира",
-			price:        40000,
-			distanceFrom: 52,
-			region:       "Ленский",
-		},
-		{
-			id:           4,
-			name:         "4х комнатная квартира",
-			price:        15000,
-			distanceFrom: 32,
-			region:       "Сино",
-		},
-	}
 
-	fmt.Println(sortByCheapPrice(houses))
-	fmt.Println(sortByExpensivePrice(houses))
-	fmt.Println(sortByFarDistance(houses))
-	fmt.Println(sortByCloseDistance(houses))
-	fmt.Println(searchByMaxPrice(houses, 42000))
-	fmt.Println(searchByMinAndMaxPrice(houses, 17_000, 46_000))
-	fmt.Println(searchByRegion(houses, "Sino"))
-	fmt.Println(searchByRegions(houses, []string{"Sino", "Somoni"}))
 }
